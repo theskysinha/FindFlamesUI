@@ -59,16 +59,37 @@ class _ChatPageState extends State<ChatPage> {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  ProfilesWidget("assets/images/ali.jpg", 100),
-                  ProfilesWidget("assets/images/tony.jpg", 100),
-                  ProfilesWidget("assets/images/james.jpg", 100),
-                  ProfilesWidget("assets/images/Jordan.jpg", 100),
+                  ProfilesWidget("assets/images/ali.jpg", 100, "Ali"),
+                  ProfilesWidget("assets/images/tony.jpg", 100, "Tony"),
+                  ProfilesWidget("assets/images/james.jpg", 100, "James"),
+                  ProfilesWidget("assets/images/Jordan.jpg", 100, "Jordan"),
                 ]
               ),
             ),
           ),
         ]
-      )
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: primaryColor,
+        fixedColor: fontColor,
+        items: [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home_outlined),
+          label: 'Home',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.search_outlined),
+          label: 'Search',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.favorite_border_outlined),
+          label: 'Favourites',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.person_outline),
+          label: 'Profile',
+        ),
+      ],)
     );
   }
 }
