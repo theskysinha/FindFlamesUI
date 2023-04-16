@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(fontFamily: 'Raleway'),
-      home: ChatPage(),
+      home: const ChatPage(),
     );
   }
 }

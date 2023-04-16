@@ -1,6 +1,9 @@
-import 'package:findflames/ui/widgets/profiles.dart';
+import 'package:findflames/ui/widgets/chats_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import '../../constants.dart';
+import '../widgets/profiles_widgets.dart';
+import '../widgets/searchbar_widget.dart';
 
 
 class ChatPage extends StatefulWidget {
@@ -20,7 +23,7 @@ class _ChatPageState extends State<ChatPage> {
         backgroundColor: primaryColor,
         elevation: 0,
         centerTitle: true,
-        title: Padding(padding: EdgeInsets.only(top: 25),
+        title: Padding(padding: const EdgeInsets.only(top: 25),
         child:
         Center(
           child: Row(
@@ -52,44 +55,72 @@ class _ChatPageState extends State<ChatPage> {
       ),
       body: Column(
         children: [
-          Container(
+          SizedBox(
             height: 140,
             child: Padding(
-              padding: EdgeInsets.only(top: 20),
+              padding: const EdgeInsets.only(top: 20),
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  ProfilesWidget("assets/images/ali.jpg", 100, "Ali"),
-                  ProfilesWidget("assets/images/tony.jpg", 100, "Tony"),
-                  ProfilesWidget("assets/images/james.jpg", 100, "James"),
-                  ProfilesWidget("assets/images/Jordan.jpg", 100, "Jordan"),
+                  ProfilesWidget("assets/images/ali.jpg",100,"Ali"),
+                  ProfilesWidget("assets/images/tony.jpg",100, "Tony"),
+                  ProfilesWidget("assets/images/james.jpg",100, "James"),
+                  ProfilesWidget("assets/images/Jordan.jpg",100, "Jordan"),
                 ]
               ),
             ),
           ),
-        ]
+    const SizedBox(height:20),
+    Stack(
+  children: <Widget>[
+    Positioned(
+      top: 0,
+      left: 0,
+      right: 0,
+      child: SizedBox(
+        height: 70,
+        child: SearchBar(),
       ),
+    ),
+    Container(
+      margin: const EdgeInsets.only(top: 70), // add top margin to ChatMessages container
+      height: 379.2,
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(30),
+          topRight: Radius.circular(30),
+        ),
+      ),
+      child: ChatMessages(),
+    ),],
+    )
+  ]),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: primaryColor,
+        currentIndex: 3,
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.white,
         fixedColor: fontColor,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
         items: [
         BottomNavigationBarItem(
-          icon: Icon(Icons.home_outlined),
+          icon: SvgPicture.asset("assets/icons/home.svg"),
           label: 'Home',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.search_outlined),
-          label: 'Search',
+          icon: SvgPicture.asset("assets/icons/community.svg"),
+          label: 'Community',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.favorite_border_outlined),
-          label: 'Favourites',
+          icon: SvgPicture.asset("assets/icons/calendar.svg"),
+          label: 'Calendar',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.person_outline),
-          label: 'Profile',
+          icon: SvgPicture.asset("assets/icons/chats.svg"),
+          label: 'Chat',
         ),
-      ],)
+      ],),
     );
   }
 }
